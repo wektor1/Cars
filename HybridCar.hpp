@@ -1,19 +1,18 @@
+#include "ElectricCar.hpp"
+#include "PetrolCar.hpp"
 #include "ElectricEngine.hpp"
 #include "PetrolEngine.hpp"
 
-class HybridCar
+class HybridCar:virtual public PetrolCar,virtual public ElectricCar
 {
 public:
-    HybridCar(PetrolEngine* petrolEng, ElectricEngine* electricEng);
+    HybridCar(PetrolEngine* petrolEng, ElectricEngine* electricEng)
+        :PetrolCar(petrolEng)
+         , ElectricCar(electricEng){}
     ~HybridCar();
-    void turnLeft();
-    void turnRight();
-    void brake();
-    void accelerate(int speed);
-    void charge();
-    void refuel();
-
-    PetrolEngine* petrolEngine_;
-    ElectricEngine* electricEngine_;
+    void refill() {
+        refuel();
+        charge();
+    }
 };
 

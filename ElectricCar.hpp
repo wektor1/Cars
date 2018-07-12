@@ -1,16 +1,15 @@
-#include "PetrolEngine.hpp"
-
-class PetrolCar
+#pragma once
+#include "ElectricEngine.hpp"
+#include "Car.hpp"
+class ElectricCar:public Car
 {
 public:
-    PetrolCar(PetrolEngine* engine);
-    ~PetrolCar();
-    void turnLeft();
-    void turnRight();
-    void brake();
-    void accelerate(int speed);
+    ElectricCar(ElectricEngine* engine);
+    ~ElectricCar();
+    ElectricEngine* engine_;
     void charge();
-
-    PetrolEngine* engine_;
+    void refill(){
+        charge();
+    }
 };
 
